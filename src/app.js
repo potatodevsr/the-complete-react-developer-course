@@ -1,12 +1,12 @@
 console.log('App.js is running!');
 // JSX - Javascript XML
-var app = {
+const app = {
     title: 'Some title',
     subtitle: 'This is my subtitle',
     options: ['One', 'Two']
 }
 
-var template = (
+const template = (
     <div>
         <h1>
             {app.title}
@@ -24,7 +24,7 @@ var template = (
     </div >
 )
 
-var user = {
+const user = {
     name: 'Chadapohn',
     age: 26,
     location: 'Thailand'
@@ -38,7 +38,7 @@ function getLocation(location) {
     }
 }
 
-var templateTwo = (
+const templateTwo = (
     <div>
         <h1>
             {user.name ? user.name : 'Anonymous'}
@@ -48,6 +48,6 @@ var templateTwo = (
     </div>
 )
 
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 
 ReactDOM.render(template, appRoot);
