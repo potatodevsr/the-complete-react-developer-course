@@ -1,35 +1,50 @@
 "use strict";
 
-// arguments object - no longer bound with arrow functions
-var add = function add(a, b) {
-  // console.log(arguments);
-  return a + b;
+console.log('App.js is running!');
+// JSX - Javascript XML
+var app = {
+  title: 'Some title',
+  subtitle: 'This is my subtitle',
+  options: ['One', 'Two']
 };
-console.log(add(55, 1, 1001));
+var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), /*#__PURE__*/React.createElement("p", null, " ", app.options.length > 0 ? 'Here are your options' : 'No options'), /*#__PURE__*/React.createElement("ol", null, /*#__PURE__*/React.createElement("li", null, "Item One"), /*#__PURE__*/React.createElement("li", null, "Item Two")));
 var user = {
   name: 'Chadapohn',
-  cities: ['Chiang Mai', 'Phuket', 'Bangkok', 'Rayong', 'Surin'],
-  printPlacesLived: function printPlacesLived() {
-    var _this = this;
-    var cityMessages = this.cities.map(function (city) {
-      return _this.name + ' has lived in ' + city + '!';
-    });
-    return cityMessages;
-    // const that = this;
-    // this.cities.forEach((city) => {
-    //     console.log(that.name + ' has lived in ' + city);
-    // });
-  }
+  age: 26,
+  location: 'Thailand'
 };
-console.log(user.printPlacesLived());
-var multiplier = {
-  numbers: [10, 20, 30],
-  multiplyBy: 3,
-  multiply: function multiply() {
-    var _this2 = this;
-    return this.numbers.map(function (number) {
-      return number * _this2.multiplyBy;
-    });
+function getLocation(location) {
+  if (location) {
+    return /*#__PURE__*/React.createElement("p", null, "Location: ", location);
   }
+}
+
+// const templateTwo = (
+//     <div>
+//         <h1>
+//             {user.name ? user.name : 'Anonymous'}
+//         </h1>
+//         {user.age >= 18 && <p>Age: {user.age}</p>}
+//         {getLocation(user.location)}
+//     </div>
+// )
+
+var count = 0;
+var addOne = function addOne() {
+  console.log('addOne');
 };
-console.log(multiplier.multiply());
+var minusOne = function minusOne() {
+  console.log('minusOne');
+};
+var reset = function reset() {
+  console.log('reset');
+};
+var templateTwo = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, "Count: ", count), /*#__PURE__*/React.createElement("button", {
+  onClick: addOne
+}, "+1"), /*#__PURE__*/React.createElement("button", {
+  onClick: minusOne
+}, "-1"), /*#__PURE__*/React.createElement("button", {
+  onClick: reset
+}, "Reset"));
+var appRoot = document.getElementById('app');
+ReactDOM.render(templateTwo, appRoot);
