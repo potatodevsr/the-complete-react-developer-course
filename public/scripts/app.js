@@ -21,16 +21,20 @@ var onRemoveAll = function onRemoveAll() {
   app.options = [];
   render(); // Call the correct render function
 };
+var onMakeDecision = function onMakeDecision() {
+  var randomNum = Math.floor(Math.random() * app.options.length); // Fixed the typo
+  var option = app.options[randomNum];
+  alert(option);
+  console.log(randomNum);
+};
 var appRoot = document.getElementById('app');
-var numbers = [55, 101, 1000];
 var render = function render() {
   var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), /*#__PURE__*/React.createElement("p", null, app.options.length > 0 ? 'Here are your options' : 'No options'), /*#__PURE__*/React.createElement("p", null, "Total options: ", app.options.length), /*#__PURE__*/React.createElement("button", {
+    disabled: app.options.length === 0,
+    onClick: onMakeDecision
+  }, "What Should I do?"), /*#__PURE__*/React.createElement("button", {
     onClick: onRemoveAll
-  }, "Remove All"), [99, 98, 97, 'Chadapohn Sorakanit', null, undefined, true], numbers.map(function (number) {
-    return /*#__PURE__*/React.createElement("p", {
-      key: numbers
-    }, "Number: ", number);
-  }), /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option) {
+  }, "Remove All"), /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option) {
     return /*#__PURE__*/React.createElement("li", {
       key: option
     }, "Option: ", option);
@@ -40,7 +44,6 @@ var render = function render() {
     type: "text",
     name: "option"
   }), /*#__PURE__*/React.createElement("button", null, "Add Option")));
-  var appRoot = document.getElementById('app');
   ReactDOM.render(template, appRoot);
 };
 

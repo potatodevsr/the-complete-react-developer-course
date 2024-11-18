@@ -22,8 +22,14 @@ const onRemoveAll = () => {
     render(); // Call the correct render function
 };
 
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * app.options.length); // Fixed the typo
+    const option = app.options[randomNum];
+    alert(option);
+    console.log(randomNum);
+};
+
 const appRoot = document.getElementById('app');
-const numbers = [55, 101, 1000]
 const render = () => {
     const template = (
         <div>
@@ -31,11 +37,9 @@ const render = () => {
             {app.subtitle && <p>{app.subtitle}</p>}
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>Total options: {app.options.length}</p>
+            <button disabled={app.options.length === 0} onClick={onMakeDecision}>What Should I do?</button>
             <button onClick={onRemoveAll}>Remove All</button>
-            {[99, 98, 97, 'Chadapohn Sorakanit', null, undefined, true]}
-            {numbers.map((number) => {
-                return <p key={numbers}>Number: {number}</p>
-            })}
+
             <ol>
                 {app.options.map((option) => (
                     <li key={option}>Option: {option}</li>
@@ -44,17 +48,16 @@ const render = () => {
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option" />
                 <button>Add Option</button>
-
             </form>
         </div>
     );
 
-    const appRoot = document.getElementById('app');
     ReactDOM.render(template, appRoot);
 };
 
 // Initial render
 render();
+
 
 
 const user = {
