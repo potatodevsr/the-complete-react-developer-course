@@ -3,26 +3,53 @@ console.log('App.js is running!');
 const app = {
     title: 'Some title',
     subtitle: 'This is my subtitle',
-    options: ['One', 'Two']
-}
+    options: []
+};
 
-const template = (
-    <div>
-        <h1>
-            {app.title}
-        </h1>
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p> {app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
-        <ol>
-            <li>
-                Item One
-            </li>
-            <li>
-                Item Two
-            </li>
-        </ol>
-    </div >
-)
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+
+    if (option) {
+        app.options.push(option);
+        e.target.elements.option.value = '';
+        render(); // Call the correct render function
+    }
+};
+// onRemoveAll
+const onRemoveAll = () => {
+    app.options = [];
+    render(); // Call the correct render function
+};
+
+const render = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
+            <p>Total options: {app.options.length}</p>
+            <button onClick={onRemoveAll}>Remove All</button>
+            <ol>
+                {app.options.map((option, index) => (
+                    <li key={index}>{option}</li>
+                ))}
+            </ol>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option" />
+                <button>Add Option</button>
+
+            </form>
+        </div>
+    );
+
+    const appRoot = document.getElementById('app');
+    ReactDOM.render(template, appRoot);
+};
+
+// Initial render
+render();
+
 
 const user = {
     name: 'Chadapohn',
@@ -48,32 +75,34 @@ function getLocation(location) {
 //     </div>
 // )
 
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounterApp();
-};
-const minusOne = () => {
-    count--;
-    renderCounterApp();
-};
-const reset = () => {
-    count = 0;
-    renderCounterApp();
-};
-const renderCounterApp = () => {
-    const templateTwo = (
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>Reset</button>
-        </div>
-    );
+// let count = 0;
+// const addOne = () => {
+//     count++;
+//     renderCounterApp();
+// };
+// const minusOne = () => {
+//     count--;
+//     renderCounterApp();
+// };
+// const reset = () => {
+//     count = 0;
+//     renderCounterApp();
+// };
+// const renderCounterApp = () => {
+//     const templateTwo = (
+//         <div>
+//             <h1>Count: {count}</h1>
+//             <button onClick={addOne}>+1</button>
+//             <button onClick={minusOne}>-1</button>
+//             <button onClick={reset}>Reset</button>
+//         </div>
+//     );
 
-    const appRoot = document.getElementById('app');
+//     // const appRoot = document.getElementById('app');
 
-    ReactDOM.render(templateTwo, appRoot);
-}
+//     // ReactDOM.render(templateTwo, appRoot);
+// }
 
-renderCounterApp();
+const appRoot = document.getElementById('app');
+// ReactDOM.render(template, appRoot);
+// renderCounterApp();
