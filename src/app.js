@@ -22,6 +22,8 @@ const onRemoveAll = () => {
     render(); // Call the correct render function
 };
 
+const appRoot = document.getElementById('app');
+const numbers = [55, 101, 1000]
 const render = () => {
     const template = (
         <div>
@@ -30,9 +32,13 @@ const render = () => {
             <p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
             <p>Total options: {app.options.length}</p>
             <button onClick={onRemoveAll}>Remove All</button>
+            {[99, 98, 97, 'Chadapohn Sorakanit', null, undefined, true]}
+            {numbers.map((number) => {
+                return <p key={numbers}>Number: {number}</p>
+            })}
             <ol>
-                {app.options.map((option, index) => (
-                    <li key={index}>{option}</li>
+                {app.options.map((option) => (
+                    <li key={option}>Option: {option}</li>
                 ))}
             </ol>
             <form onSubmit={onFormSubmit}>
@@ -103,6 +109,6 @@ function getLocation(location) {
 //     // ReactDOM.render(templateTwo, appRoot);
 // }
 
-const appRoot = document.getElementById('app');
+// const appRoot = document.getElementById('app');
 // ReactDOM.render(template, appRoot);
 // renderCounterApp();

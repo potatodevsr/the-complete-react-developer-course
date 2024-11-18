@@ -21,13 +21,19 @@ var onRemoveAll = function onRemoveAll() {
   app.options = [];
   render(); // Call the correct render function
 };
+var appRoot = document.getElementById('app');
+var numbers = [55, 101, 1000];
 var render = function render() {
   var template = /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", null, app.title), app.subtitle && /*#__PURE__*/React.createElement("p", null, app.subtitle), /*#__PURE__*/React.createElement("p", null, app.options.length > 0 ? 'Here are your options' : 'No options'), /*#__PURE__*/React.createElement("p", null, "Total options: ", app.options.length), /*#__PURE__*/React.createElement("button", {
     onClick: onRemoveAll
-  }, "Remove All"), /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option, index) {
+  }, "Remove All"), [99, 98, 97, 'Chadapohn Sorakanit', null, undefined, true], numbers.map(function (number) {
+    return /*#__PURE__*/React.createElement("p", {
+      key: numbers
+    }, "Number: ", number);
+  }), /*#__PURE__*/React.createElement("ol", null, app.options.map(function (option) {
     return /*#__PURE__*/React.createElement("li", {
-      key: index
-    }, option);
+      key: option
+    }, "Option: ", option);
   })), /*#__PURE__*/React.createElement("form", {
     onSubmit: onFormSubmit
   }, /*#__PURE__*/React.createElement("input", {
@@ -89,6 +95,6 @@ function getLocation(location) {
 //     // ReactDOM.render(templateTwo, appRoot);
 // }
 
-var appRoot = document.getElementById('app');
+// const appRoot = document.getElementById('app');
 // ReactDOM.render(template, appRoot);
 // renderCounterApp();
