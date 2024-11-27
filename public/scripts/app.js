@@ -48,16 +48,29 @@ var Options = /*#__PURE__*/function (_React$Component3) {
   return _createClass(Options, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/React.createElement("div", null, "Options Component here");
+      return /*#__PURE__*/React.createElement("div", null, "Options Component here", /*#__PURE__*/React.createElement(Option, null));
     }
   }]);
 }(React.Component);
-var AddOption = /*#__PURE__*/function (_React$Component4) {
+var Option = /*#__PURE__*/function (_React$Component4) {
+  function Option() {
+    _classCallCheck(this, Option);
+    return _callSuper(this, Option, arguments);
+  }
+  _inherits(Option, _React$Component4);
+  return _createClass(Option, [{
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/React.createElement("div", null, "Option Component here");
+    }
+  }]);
+}(React.Component);
+var AddOption = /*#__PURE__*/function (_React$Component5) {
   function AddOption() {
     _classCallCheck(this, AddOption);
     return _callSuper(this, AddOption, arguments);
   }
-  _inherits(AddOption, _React$Component4);
+  _inherits(AddOption, _React$Component5);
   return _createClass(AddOption, [{
     key: "render",
     value: function render() {
