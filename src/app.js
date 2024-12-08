@@ -1,3 +1,14 @@
+// const obj = {
+//     name: 'Chadapohn',
+//     getName() {
+//         return this.name;
+//     }
+// }
+
+// const getName = obj.getName.bind({ name: 'Tanoo' });
+
+// console.log('obj getName = ', obj.getName());
+
 class IndecisionApp extends React.Component {
     render() {
         const title = 'Indecision';
@@ -45,6 +56,13 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);
+    }
+    handleRemoveAll = () => {
+        console.log(this.props.options);
+    }
     render() {
         return (
             <div>
@@ -53,7 +71,7 @@ class Options extends React.Component {
                 {/*  Render new p tag each option (set text, set key) */}
 
                 {/* {this.props.options.map((option) => <p key={option}>{option}</p>)} */}
-                <button onClick={() => alert('remove All')}>Remove All</button>
+                <button onClick={this.handleRemoveAll}>Remove All</button>
                 {this.props.options.map((option) => <Option key={option} OptionText={option} />)}
                 {/* การวนลูปเพื่อสร้างคอมโพเนนต์ <Option> สำหรับทุกๆ ค่าใน options โดยส่งค่าของแต่ละ option ไปให้เป็น props เพื่อใช้ใน Component ชื่อ Option */}
             </div>
