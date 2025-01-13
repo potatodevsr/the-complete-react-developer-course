@@ -3,18 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Chadapohn Dev",
-  "license": "MIT", 
+  "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.25.9",
-    "@babel/preset-env": "^7.26.0",
-    "@babel/preset-react": "^7.25.9",
-    "live-server": "^1.2.2",
-    "babel-cli": "6.24.1"
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-react": "^6.24.1",
+    "live-server": "^1.2.0"
   },
   "scripts": {
     "ls": "ls",
-    "serve": "live-server public/"
+    "serve": "live-server public/",
+    "build": "webpack",
+    "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
   "dependencies": {
+    "webpack": "3.1.0"
   }
 }
